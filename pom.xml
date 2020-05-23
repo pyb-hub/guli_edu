@@ -4,6 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <modules>
         <module>service</module>
+        <module>common</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -18,7 +19,7 @@
     <name>guli_parent</name>
     <description>Demo project for Spring Boot</description>
 
-    <!--父工程的版本管理-->
+    <!--父工程的版本管理：主要防止子模块之间的版本冲突-->
     <properties>
         <java.version>1.8</java.version>
         <guli.version>0.0.1-SNAPSHOT</guli.version>
@@ -46,7 +47,7 @@
         <cloud-alibaba.version>0.2.2.RELEASE</cloud-alibaba.version>
     </properties>
 
-    <!--父工程的公共依赖-->
+    <!--父工程的公共依赖的版本-->
     <dependencyManagement>
         <dependencies>
             <!--Spring Cloud-->
