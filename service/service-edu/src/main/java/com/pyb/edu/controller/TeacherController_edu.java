@@ -27,7 +27,7 @@ import java.util.List;
 @Api(tags = "讲师接口")/*swagger页面测试显示*/
 @RestController
 @RequestMapping("/edu/teacher")
-public class TeacherController {
+public class TeacherController_edu {
 
     @Autowired
     private TeacherService teacherService;
@@ -105,7 +105,8 @@ public class TeacherController {
         if (!StringUtils.isEmpty(begin)){
             wrapper.le("gmt_modified",end);
         }
-
+        /*根据修改时间排序*/
+        wrapper.orderByDesc("gmt_modified");
 
         teacherService.page(pageTeacher, wrapper);
         /*在这里获取分页后的数据*/
