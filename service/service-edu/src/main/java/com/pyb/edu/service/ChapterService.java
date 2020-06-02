@@ -17,4 +17,6 @@ import java.util.List;
 public interface ChapterService extends IService<Chapter> {
 
     List<ChapterOne> findChapterAndVideo(String cid);
+
+    void delete(String id);
 }

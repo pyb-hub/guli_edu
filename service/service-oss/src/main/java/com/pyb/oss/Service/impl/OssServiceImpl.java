@@ -38,7 +38,7 @@ public class OssServiceImpl implements OssService {
             * 第二个参数：文件路径加名称（根据时间分类管理）
             * 第三个参数：文件流*/
             ossClient.putObject(bucketName,dir+"/"+fileName,inputStream);
-            /*返回上传的路径*/
+            /*返回上传的路径，拼接而成*/
             String url = "https://"+bucketName+"."+endPoint+"/"+fileName;
             return url;
 

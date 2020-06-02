@@ -108,10 +108,10 @@ public class TeacherController_edu {
         /*根据修改时间排序*/
         wrapper.orderByDesc("gmt_modified");
 
+        /*分页查询*/
         teacherService.page(pageTeacher, wrapper);
-        /*在这里获取分页后的数据*/
 
-
+        /*在定义的page中获取分页后的数据*/
         /*当前的全部数据条数*/
         long total = pageTeacher.getTotal();
 

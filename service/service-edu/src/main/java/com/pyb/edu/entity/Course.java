@@ -67,6 +67,7 @@ public class Course implements Serializable {
     private String status;
 
     @ApiModelProperty(value = "逻辑删除 1（true）已删除， 0（false）未删除")
+    @TableLogic/*1.逻辑删除注解；2.配置类中逻辑删除插件*/
     private Integer isDeleted;
 
     @ApiModelProperty(value = "创建时间")

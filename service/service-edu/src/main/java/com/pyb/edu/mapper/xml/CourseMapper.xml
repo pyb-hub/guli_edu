@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pyb.edu.mapper.CourseMapper">
-
+    <!--sql：根据id查询多个表，得到课程确认信息-->
+    <select id="getCourseConfirmInfo" resultType="com.pyb.edu.entity.vo.CourseConfirmVo">
+       select ec.id,ec.cover,ec.title,ec.lesson_num as lessonNum,ec.price,et.`name` as teacherName,es.title as subjectOne,es2.title as subjectTwo
+       from edu_course ec
+        left outer join edu_course_description ecd on ec.id=ecd.id
+        left outer join edu_teacher et on ec.teacher_id=et.id
+        left outer join edu_subject es on ec.subject_parent_id=es.id
+        left outer join edu_subject es2 on ec.subject_id=es2.id
+        where ec.id=#{id}
+/*${id}:拼接导致sql注入*/
+    </select>
 </mapper>

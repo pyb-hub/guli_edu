@@ -35,7 +35,7 @@ public class ChapterServiceImpl extends ServiceImpl<ChapterMapper, Chapter> impl
         /*查找所有的一级分类*/
         QueryWrapper<Chapter> wrapper = new QueryWrapper<>();
         wrapper.eq("course_id",cid);
-        wrapper.orderByAsc("gmt_create");
+        wrapper.orderByAsc("sort");
         List<Chapter> listChapter = baseMapper.selectList(wrapper);
         List<ChapterOne> chapterOnes = new ArrayList<>();
 
@@ -50,6 +50,7 @@ public class ChapterServiceImpl extends ServiceImpl<ChapterMapper, Chapter> impl
             QueryWrapper<Video> wrapper2 = new QueryWrapper<>();
             wrapper2.eq("chapter_id",id);
             wrapper2.eq("course_id",cid);
+            wrapper2.orderByAsc("sort");
             List<Video> listVideo = videoService.list(wrapper2);
 
             /*把查到的二级实体类，转化为我们自己封装的一级分类中的二级分类*/
@@ -65,5 +66,20 @@ public class ChapterServiceImpl extends ServiceImpl<ChapterMapper, Chapter> impl
             chapterOnes.add(chapterOne);
         }
         return chapterOnes;
+    }
+
+    @Override
+    public void delete(String id) {
+        /*删除章节和对应的小节*/
+        this.removeById(id);
+        /*查看是否存在对应的小节*/
+        QueryWrapper<Video> wrapper = new QueryWrapper<>();
+        wrapper.eq("chapter_id",id);
+        //Video one = videoService.getOne(wrapper);
+        int count = videoService.count(wrapper);
+        if (count == 0){
+            return;
+        }
+        videoService.remove(wrapper);
     }
 }

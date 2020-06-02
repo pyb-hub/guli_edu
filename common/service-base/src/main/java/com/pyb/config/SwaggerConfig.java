@@ -32,7 +32,7 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("谷粒学院")
                 .description("谷粒学院接口")
-                .termsOfServiceUrl("liuscoding")
+                .termsOfServiceUrl("pybCoding")
                 .contact(new Contact("pyb","pyb.cn","pyb1997@qq.com"))
                 .version("1.0")
                 .build();

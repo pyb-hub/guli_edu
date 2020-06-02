@@ -1,8 +1,11 @@
 package com.pyb.edu.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.pyb.edu.entity.Course;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.pyb.edu.entity.vo.CourseConfirmVo;
 import com.pyb.edu.entity.vo.CourseInfo;
+import com.pyb.edu.entity.vo.CourseVo;
 
 /**
  * <p>
@@ -19,4 +22,10 @@ public interface CourseService extends IService<Course> {
     CourseInfo getCourseInfoById(String id);
 
     String updateCourseInfo(CourseInfo courseInfo);
+
+    CourseConfirmVo getCourseConfirmInfoById(String id);
+
+    Page<Course> courseList(int page, int size, CourseVo courseVo);
+
+    Boolean delCourse(String id);
 }
