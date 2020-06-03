@@ -46,8 +46,9 @@ public class VodServiceImpl implements VodService {
     }
 
     @Override
+    /*删除阿里云上面的视频*/
     public Boolean delVideo(String id)  {
-        /*删除阿里云上面的视频*/
+
         try {
             /*调用自定义的初始化工具类，初始化client*/
             DefaultAcsClient client = InitAliyunClient.initVodClient(VodConstants.ACCESS_KEY_ID, VodConstants.ACCESS_KEY_SECRET);

@@ -59,10 +59,10 @@ public class ChapterController {
     }
 
     @DeleteMapping("delChapter/{id}")
-    @ApiOperation("删除章节")
+    @ApiOperation("通过章节id删除章节")
     /*TODO：删除小节的时候要把小节里面的视频删除了*/
     public Result delOne(@PathVariable String id) {
-        /*还要删除对应的小节*/
+        /*删除章节和对应的小节和视频*/
         chapterService.delete(id);
         return Result.ok();
     }

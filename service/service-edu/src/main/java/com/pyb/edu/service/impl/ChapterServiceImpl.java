@@ -1,6 +1,7 @@
 package com.pyb.edu.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.pyb.edu.client.VodClient;
 import com.pyb.edu.entity.Chapter;
 import com.pyb.edu.entity.Video;
 import com.pyb.edu.entity.chapter.ChapterOne;
@@ -12,6 +13,7 @@ import com.pyb.edu.service.VideoService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +31,9 @@ public class ChapterServiceImpl extends ServiceImpl<ChapterMapper, Chapter> impl
 
     @Autowired
     private VideoService videoService;
+
+    @Autowired
+    private VodClient vodClient;
 
     @Override
     public List<ChapterOne> findChapterAndVideo(String cid) {
@@ -75,11 +80,19 @@ public class ChapterServiceImpl extends ServiceImpl<ChapterMapper, Chapter> impl
         /*查看是否存在对应的小节*/
         QueryWrapper<Video> wrapper = new QueryWrapper<>();
         wrapper.eq("chapter_id",id);
-        //Video one = videoService.getOne(wrapper);
-        int count = videoService.count(wrapper);
-        if (count == 0){
+        List<Video> list = videoService.list(wrapper);
+        if (list == null){
             return;
         }
+        /*删除aliyun视频*/
+        for (Video v:list) {
+            String videoSourceId = v.getVideoSourceId();
+            if (!StringUtils.isEmpty(videoSourceId)){
+                vodClient.removeVideo(videoSourceId);
+            }
+        }
+
+        /*删除全部的符合条件的小节*/
         videoService.remove(wrapper);
     }
 }

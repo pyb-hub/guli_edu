@@ -47,10 +47,10 @@ public class VideoController {
     }
 
     @DeleteMapping("delVideo/{id}")
-    @ApiOperation("删除小节")
-    /*TODO：删除小节的时候要把小节里面的视频删除了*/
+    @ApiOperation("通过小节id删除小节")
     public Result delVideo(@PathVariable String id) {
-        boolean b = videoService.removeById(id);
+        /*删除小节的时候要把小节里面的视频删除了*/
+        boolean b = videoService.removeVideo(id);
         if (b){
             return Result.ok();
         }

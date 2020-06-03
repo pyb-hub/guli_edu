@@ -29,7 +29,7 @@ public class VodController {
         return Result.error().data("videoId",null);
     }
 
-    /*TODO 删除视频*/
+
     @DeleteMapping("removeVideo/{sourceId}")
     @ApiOperation("删除视频")
     public Result removeVideo(@PathVariable("sourceId") String sourceId) {

@@ -4,19 +4,14 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.pyb.config.exceptionHandler.MyException;
-import com.pyb.edu.entity.Chapter;
-import com.pyb.edu.entity.Course;
-import com.pyb.edu.entity.CourseDescription;
-import com.pyb.edu.entity.Video;
+import com.pyb.edu.client.VodClient;
+import com.pyb.edu.entity.*;
 import com.pyb.edu.entity.vo.CourseConfirmVo;
 import com.pyb.edu.entity.vo.CourseInfo;
 import com.pyb.edu.entity.vo.CourseVo;
 import com.pyb.edu.mapper.CourseMapper;
-import com.pyb.edu.service.ChapterService;
-import com.pyb.edu.service.CourseDescriptionService;
-import com.pyb.edu.service.CourseService;
+import com.pyb.edu.service.*;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.pyb.edu.service.VideoService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,6 +39,9 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
 
     @Autowired
     private VideoService videoService;
+
+    @Autowired
+    private VodClient vodClient;
 
     @Override
     @Transactional
@@ -137,17 +135,33 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
         /*删除课程*/
         int i = baseMapper.deleteById(id);
         /*删除描述*/
-        boolean b = descriptionService.removeById(id);
+        descriptionService.removeById(id);
         /*删除章节*/
         QueryWrapper<Chapter> wrapper = new QueryWrapper<>();
         wrapper.eq("course_id",id);
-        boolean remove = chapterService.remove(wrapper);
-        /*删除小节*/
+        int count = chapterService.count(wrapper);
+        /*判断非空，少一次数据库操作*/
+        if (count != 0){
+            chapterService.remove(wrapper);
+        }
+        /*删除视频*/
         QueryWrapper<Video> wrapper2 = new QueryWrapper<>();
         wrapper2.eq("course_id",id);
-        boolean remove1 = videoService.remove(wrapper2);
-        /*TODO 删除视频地址*/
-
-        return i!=0 && b && remove && remove1;
+        /*查询返回的字段*/
+        wrapper2.select("video_source_id");
+        /*查询video对应的sourceId*/
+        List<Video> videoList = videoService.list(wrapper2);
+        if (videoList.size()>0){
+            for (Video video : videoList) {
+                /*删除阿里云的视频*/
+                String videoSourceId = video.getVideoSourceId();
+                if (!StringUtils.isEmpty(videoSourceId)){
+                    vodClient.removeVideo(videoSourceId);
+                }
+            }
+            /*删除video对应的小节*/
+            videoService.remove(wrapper2);
+        }
+        return i!=0;
     }
 }

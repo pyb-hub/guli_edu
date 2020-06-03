@@ -15,32 +15,34 @@
         <module>service-edu</module>
         <module>service-oss</module>
         <module>service-vod</module>
+        <module>service-cms</module>
     </modules>
 
     <dependencies>
-
-        <!--<dependency>
+        <!--springcloud-->
+        <!--负载均衡：ribbon-->
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
         </dependency>
-
-        &lt;!&ndash;hystrix依赖，主要是用  @HystrixCommand &ndash;&gt;
+        <!--熔断器：hystrix依赖，主要是用  @HystrixCommand -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
         </dependency>
-
-        &lt;!&ndash;服务注册&ndash;&gt;
+        <!--服务注册：nacos-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
-        &lt;!&ndash;服务调用&ndash;&gt;
+
+        <!--服务调用：feign-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>-->
+        </dependency>
 
+        <!--springboot-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -133,7 +135,7 @@
 
 
 
-
+<!--解决src中的xml文件不能加载的问题：还需要在配置文件中配置mybatis-plus.mapper-location属性-->
     <!--<build>
         <resources>
             <resource>

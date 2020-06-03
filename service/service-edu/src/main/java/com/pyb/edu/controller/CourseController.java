@@ -35,8 +35,8 @@ public class CourseController {
 
     @GetMapping("CourseList/{page}/{size}")
     @ApiOperation("课程列表分页条件查询")
-    public Result courseList(@PathVariable(name = "page") int page,
-                             @PathVariable(name = "size") int size,
+    public Result courseList(@PathVariable("page") int page,
+                             @PathVariable("size") int size,
                              @RequestBody CourseVo courseVo) {
         Page<Course> coursePage = courseService.courseList(page, size, courseVo);
         List<Course> records = coursePage.getRecords();
@@ -44,7 +44,7 @@ public class CourseController {
         return Result.ok().data("records",records).data("total",total);
     }
 
-    /*TODO:删除小节下面的视频地址操作*/
+
     @DeleteMapping("delCourse/{id}")
     @ApiOperation("课程删除，还需要删除对应的章节，小节，视频")
     public Result delCourse(@PathVariable String id) {
@@ -92,8 +92,15 @@ public class CourseController {
         courseService.updateById(course);
         return Result.ok();
     }
-
-
+    @PutMapping("test")
+    @ApiOperation("测试")
+    public Result t() {
+        QueryWrapper<Course> wrapper = new QueryWrapper<>();
+        wrapper.eq("id","212121");
+        List<Course> list1 = courseService.list(null);
+        List<Course> list2 = courseService.list(wrapper);
+        return Result.ok().data("list1",list1).data("list2",list2);
+    }
 
 
 }
