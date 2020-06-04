@@ -7,6 +7,8 @@ import com.pyb.edu.entity.vo.CourseConfirmVo;
 import com.pyb.edu.entity.vo.CourseInfo;
 import com.pyb.edu.entity.vo.CourseVo;
 
+import java.util.List;
+
 /**
  * <p>
  * 课程 服务类
@@ -28,4 +30,6 @@ public interface CourseService extends IService<Course> {
     Page<Course> courseList(int page, int size, CourseVo courseVo);
 
     Boolean delCourse(String id);
+
+    List<Course> courseIndex();
 }

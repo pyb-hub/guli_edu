@@ -1,4 +1,4 @@
-package com.pyb.config;
+package com.pyb.servicebase.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

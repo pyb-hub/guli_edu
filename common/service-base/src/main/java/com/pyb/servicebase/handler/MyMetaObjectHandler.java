@@ -1,4 +1,4 @@
-package com.pyb.config.handler;
+package com.pyb.servicebase.handler;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import org.apache.ibatis.reflection.MetaObject;

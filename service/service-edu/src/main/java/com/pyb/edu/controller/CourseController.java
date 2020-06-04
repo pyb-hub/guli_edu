@@ -92,16 +92,6 @@ public class CourseController {
         courseService.updateById(course);
         return Result.ok();
     }
-    @PutMapping("test")
-    @ApiOperation("测试")
-    public Result t() {
-        QueryWrapper<Course> wrapper = new QueryWrapper<>();
-        wrapper.eq("id","212121");
-        List<Course> list1 = courseService.list(null);
-        List<Course> list2 = courseService.list(wrapper);
-        return Result.ok().data("list1",list1).data("list2",list2);
-    }
-
 
 }
 

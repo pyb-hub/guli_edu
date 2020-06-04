@@ -161,7 +161,7 @@ public class TeacherController_edu {
         }
     }
     @ApiOperation("修改讲师信息")
-    @PutMapping("update/{id}")/*put提交需要传入id值,可以直接用post传入对象方式提交*/
+    @PutMapping("update/{id}")
     public Result updateInfo(@PathVariable String id, @RequestBody Teacher teacher) {
         teacher.setId(id);
         boolean b = teacherService.updateById(teacher);
@@ -172,7 +172,7 @@ public class TeacherController_edu {
         }
     }
     /*@ApiOperation("修改讲师信息")
-    @PostMapping("update")*//*put提交需要传入id值，可以直接用post传入对象*//*
+    @PostMapping("update")*//*可以直接用post传入对象*//*
     public Result updateInfo(@RequestBody Teacher teacher) {
         boolean b = teacherService.updateById(teacher);
         if (b){

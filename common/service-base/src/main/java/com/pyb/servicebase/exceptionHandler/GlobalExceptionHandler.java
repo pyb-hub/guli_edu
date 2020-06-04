@@ -1,4 +1,4 @@
-package com.pyb.config.exceptionHandler;
+package com.pyb.servicebase.exceptionHandler;
 
 import com.pyb.result.Result;
 import lombok.extern.slf4j.Slf4j;

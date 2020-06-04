@@ -68,7 +68,7 @@ public class BannerAdminController {
     }
 
     @ApiOperation("删除banner")
-    @PostMapping("delBanner/{bannerId}")
+    @DeleteMapping("delBanner/{bannerId}")
     public Result delBanner(@PathVariable String bannerId) {
         boolean b = bannerService.removeById(bannerId);
         return b? Result.ok():Result.error();

@@ -1,4 +1,4 @@
-package com.pyb.config.exceptionHandler;
+package com.pyb.servicebase.exceptionHandler;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

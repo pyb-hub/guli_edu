@@ -8,6 +8,7 @@ import com.pyb.result.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,12 +36,8 @@ public class BannerFrontController {
     @GetMapping("getAll")
     @ApiOperation("排序查询前3条banner")
     public Result getAll() {
-        QueryWrapper<CrmBanner> wrapper = new QueryWrapper<>();
-        wrapper.orderByDesc("id");
-        /*sql拼接*/
-        wrapper.last("limit 3");
 
-        List<CrmBanner> list = bannerService.list(wrapper);
+        List<CrmBanner> list = bannerService.getlist();
         if (list.size()>0){
             return Result.ok().data("list",list);
         }
