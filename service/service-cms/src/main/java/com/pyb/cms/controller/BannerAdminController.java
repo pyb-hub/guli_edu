@@ -46,7 +46,6 @@ public class BannerAdminController {
     public Result getBanner(@PathVariable("id") String id) {
 
         CrmBanner banner = bannerService.getById(id);
-        /*返回分页查询的全部页数记录条数数total和查到的list集合*/
         if (banner!=null){
             return Result.ok().data("banner",banner);
         }

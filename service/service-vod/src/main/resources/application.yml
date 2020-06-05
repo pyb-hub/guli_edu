@@ -3,7 +3,7 @@ server:
 #服务名
 spring:
   application:
-    name: service-vod
+    name: service-vod-8003
 #开发环境
   profiles:
     active: dev

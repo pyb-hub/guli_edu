@@ -1,7 +1,7 @@
 package com.pyb.oss.controller;
 
 
-import com.pyb.oss.Service.OssService;
+import com.pyb.oss.service.OssService;
 import com.pyb.result.Result;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;

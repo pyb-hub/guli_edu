@@ -38,7 +38,7 @@ public class BannerFrontController {
     public Result getAll() {
 
         List<CrmBanner> list = bannerService.getlist();
-        if (list.size()>0){
+        if (list.size() > 0){
             return Result.ok().data("list",list);
         }
         return Result.error();

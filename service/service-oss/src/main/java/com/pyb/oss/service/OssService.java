@@ -1,6 +1,5 @@
-package com.pyb.oss.Service;
+package com.pyb.oss.service;
 
-import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 

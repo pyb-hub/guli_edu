@@ -1,8 +1,8 @@
-package com.pyb.oss.Service.impl;
+package com.pyb.oss.service.impl;
 
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
-import com.pyb.oss.Service.OssService;
+import com.pyb.oss.service.OssService;
 import com.pyb.oss.utils.ConstantPropertyUtil;
 import org.joda.time.DateTime;
 import org.springframework.stereotype.Service;
