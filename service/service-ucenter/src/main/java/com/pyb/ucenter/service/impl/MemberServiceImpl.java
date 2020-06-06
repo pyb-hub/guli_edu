@@ -9,7 +9,6 @@ import com.pyb.ucenter.service.MemberService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.pyb.utils.JwtUtils;
 import com.pyb.utils.MD5Utils;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -102,5 +101,13 @@ public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> impleme
         /*设置默认头像，后续可更改*/
         member.setAvatar("https://guli-file-190513.oss-cn-beijing.aliyuncs.com/avatar/default.jpg");
         this.save(member);
+    }
+
+    @Override
+    public Member getMemberByOpenid(String openid) {
+        /*判断是否微信扫码登录了*/
+        QueryWrapper<Member> wrapper = new QueryWrapper<>();
+        wrapper.eq("openid",openid);
+        return this.getOne(wrapper);
     }
 }

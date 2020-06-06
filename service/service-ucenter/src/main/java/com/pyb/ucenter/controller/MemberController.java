@@ -32,7 +32,7 @@ public class MemberController {
     private MemberService memberService;
 
     @PostMapping("login")
-    @ApiOperation("用户登录")
+    @ApiOperation("用户登录")/*登录成功返回token，前端把token放在cookie和request的请求头中*/
     public Result login(@RequestBody Member member) {
         /*前端在member传入mobile和password*/
         String token = memberService.login(member);
@@ -48,7 +48,7 @@ public class MemberController {
     }
 
     @GetMapping("getInfoByToken")
-    @ApiOperation("根据token得到用户信息")
+    @ApiOperation("根据token得到用户信息")/*根据request中的token，获取用户信息，存入到cookie中*/
     public Result getInfoByToken(HttpServletRequest request) {
         String id = JwtUtils.getMemberIdByJwtToken(request);
         if (StringUtils.isEmpty(id)){

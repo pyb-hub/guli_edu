@@ -29,7 +29,7 @@ public class IndexFrontController {
     private TeacherService teacherService;
 
     /*查询前八个热门课程，前4个热门讲师*/
-    @GetMapping("frontIndex")
+    @GetMapping("index")
     @ApiOperation("查询前八个热门课程,前4个热门讲师")
     public Result index() {
         //查询前八个热门课程
