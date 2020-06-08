@@ -3,6 +3,7 @@ package com.pyb.edu.mapper;
 import com.pyb.edu.entity.Course;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.pyb.edu.entity.vo.CourseConfirmVo;
+import com.pyb.edu.entity.vo.CourseFrontDetailVo;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -15,4 +16,7 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface CourseMapper extends BaseMapper<Course> {
     public CourseConfirmVo getCourseConfirmInfo(@Param("id") String id);
+
+    CourseFrontDetailVo getCourseFrontDetailInfo(@Param("id") String id);
 }
+

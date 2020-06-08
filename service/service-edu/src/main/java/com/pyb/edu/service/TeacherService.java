@@ -3,6 +3,7 @@ package com.pyb.edu.service;
 import com.pyb.edu.entity.Teacher;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -16,4 +17,6 @@ import java.util.List;
 public interface TeacherService extends IService<Teacher> {
 
     List<Teacher> teacherIndex();
+
+    HashMap<String,Object> getPageInfo(Integer currentPage, Integer size);
 }

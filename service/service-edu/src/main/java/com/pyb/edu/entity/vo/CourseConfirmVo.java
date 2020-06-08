@@ -15,5 +15,6 @@ public class CourseConfirmVo {
     private String subjectTwo;
     private String teacherName;
     private String price;
+    private String description;
 }
 

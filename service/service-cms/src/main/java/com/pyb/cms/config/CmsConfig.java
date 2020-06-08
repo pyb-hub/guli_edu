@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration/*作为配置类*/
-@MapperScan("com.pyb.edu.mapper")/*dao层的扫描包，或者在dao里面类上加入mapper注解*/
+@MapperScan("com.pyb.cms.mapper")/*dao层的扫描包，或者在dao里面类上加入mapper注解*/
 public class CmsConfig {
 
     /**

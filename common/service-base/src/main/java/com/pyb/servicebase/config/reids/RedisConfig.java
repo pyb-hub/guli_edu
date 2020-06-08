@@ -20,7 +20,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 import java.time.Duration;
 
 @Configuration
-@EnableCaching/*开启redis的缓存的注解方法*/
+@EnableCaching/*开启redis的缓存的注解方法，@CacheEvict清空缓存，适用于删除方法； @CachePut增加方法和修改方法，添加缓存； @Cacheable：适用查找方法*/
 public class RedisConfig extends CachingConfigurerSupport {
 
     @Bean

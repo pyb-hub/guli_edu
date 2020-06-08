@@ -24,7 +24,7 @@ import java.util.List;
  * @author pybCoding
  * @since 2020-05-21
  */
-@Api(tags = "讲师接口")/*swagger页面测试显示*/
+@Api(tags = "后台讲师管理接口")/*swagger页面测试显示*/
 @RestController
 @RequestMapping("/edu/teacher")
 public class TeacherController_edu {

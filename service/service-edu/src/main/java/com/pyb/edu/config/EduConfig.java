@@ -21,7 +21,7 @@ public class EduConfig {
     }
 
     /**
-     * 分页插件
+     * 分页插件，实现mp的分页功能page方法
      */
     @Bean
     public PaginationInterceptor paginationInterceptor() {

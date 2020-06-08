@@ -9,6 +9,7 @@ import org.springframework.util.StringUtils;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
+/*字符串加密方式：JWT*/
 public class JwtUtils {
 
     //常量

@@ -141,13 +141,14 @@
                 <version>${httpclient.version}</version>
             </dependency>
 
+            <!--类似fastjson-->
             <dependency>
                 <groupId>com.google.code.gson</groupId>
                 <artifactId>gson</artifactId>
                 <version>${gson.version}</version>
             </dependency>
 
-            <!-- JWT -->
+            <!-- JWT：生成用户登陆的token加密方法 -->
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt</artifactId>
@@ -189,6 +190,7 @@
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>org.json</groupId>
                 <artifactId>json</artifactId>

@@ -9,4 +9,6 @@ public class VideoTwo {
     private String id;
 
     private String title;
+
+    private String videoSourceId;
 }

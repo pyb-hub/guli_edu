@@ -1,7 +1,6 @@
 package com.pyb.edu.controller;
 
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.pyb.edu.entity.Course;
 import com.pyb.edu.entity.vo.CourseConfirmVo;
@@ -37,7 +36,7 @@ public class CourseController {
     @ApiOperation("课程列表分页条件查询")
     public Result courseList(@PathVariable("page") int page,
                              @PathVariable("size") int size,
-                             @RequestBody CourseVo courseVo) {
+                             @RequestBody(required = false) CourseVo courseVo) {
         Page<Course> coursePage = courseService.courseList(page, size, courseVo);
         List<Course> records = coursePage.getRecords();
         long total = coursePage.getTotal();
@@ -83,7 +82,7 @@ public class CourseController {
     }
 
     @PutMapping("publish/{id}")
-    @ApiOperation("修改发布课程标识")
+    @ApiOperation("修改课程状态：是否发布")
     public Result publishCourse(@PathVariable String id) {
         Course course = new Course();
         course.setId(id);
