@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import javax.servlet.http.HttpServletRequest;
 
 @Component
-@FeignClient(name = "service-torder",fallback = OrderClientImpl.class)
+@FeignClient(name = "service-torder-8007",fallback = OrderClientImpl.class)
 public interface OrderClient {
 
     @GetMapping("/order/checkOrder/{courseId}")

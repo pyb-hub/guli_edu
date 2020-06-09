@@ -82,6 +82,13 @@ public class MemberController {
         return userInfo;
     }
 
+    @GetMapping("getOneDayRegisterNum/{day}")
+    @ApiOperation("得到某一天的用户注册数目")/*在统计信息接口调用该方法*/
+    public Integer getOneDayRegisterNum(@PathVariable("day")String day) {
+
+        return  memberService.getOneDayRegisterNum(day);
+    }
+
 
 
 

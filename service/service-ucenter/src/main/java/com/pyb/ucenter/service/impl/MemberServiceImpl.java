@@ -110,4 +110,9 @@ public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> impleme
         wrapper.eq("openid",openid);
         return this.getOne(wrapper);
     }
+
+    @Override
+    public Integer getOneDayRegisterNum(String day) {
+        return baseMapper.getOneDayRegisterNum(day);
+    }
 }

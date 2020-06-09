@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 /*要调用的客户端,fallback:服务熔断之后调用的方法*/
-@FeignClient(name = "service-vod",fallback = VodClientImpl.class)
+@FeignClient(name = "service-vod-8003",fallback = VodClientImpl.class)
 @Component
 public interface VodClient {
 

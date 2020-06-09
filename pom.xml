@@ -5,6 +5,7 @@
     <modules>
         <module>service</module>
         <module>common</module>
+        <module>canal-client</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -197,7 +198,7 @@
                 <version>${json.version}</version>
             </dependency>
             <dependency>
-                <groupId>commons-dbutils</groupId>
+                <groupId>org.apache.commons</groupId>
                 <artifactId>commons-dbutils</artifactId>
                 <version>${commons-dbutils.version}</version>
             </dependency>

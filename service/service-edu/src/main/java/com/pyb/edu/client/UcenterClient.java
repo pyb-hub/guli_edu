@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import javax.servlet.http.HttpServletRequest;
 
 /*要调用的客户端,fallback:服务熔断之后调用的方法*/
-@FeignClient(name = "service-ucenter",fallback = UcenterClientImpl.class)
+@FeignClient(name = "service-ucenter-8006",fallback = UcenterClientImpl.class)
 @Component
 public interface UcenterClient {
 

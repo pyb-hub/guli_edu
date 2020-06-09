@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @Component
-@FeignClient(name = "service-edu",fallback = CourseClientImpl.class)
+@FeignClient(name = "service-edu-8001",fallback = CourseClientImpl.class)
 public interface CourseClient {
 
     /*根据id查询课程信息*/

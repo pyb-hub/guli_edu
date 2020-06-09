@@ -1,7 +1,6 @@
-package com.pyb.order.client;
+package com.pyb.sta.client;
 
-import com.pyb.order.client.impl.UcenterClientImpl;
-import com.pyb.vo.OrderUserVo;
+import com.pyb.sta.client.impl.UcenterClientImpl;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient(name = "service-ucenter-8006",fallback = UcenterClientImpl.class)
 public interface UcenterClient {
 
-    /*根据id查询用户信息*/
-    @GetMapping("/ucenter/member/getUserInfo/{userId}")
-    public OrderUserVo getUserInfo(@PathVariable("userId") String userId);
+    @GetMapping("/ucenter/member/getOneDayRegisterNum/{day}")
+    public Integer getOneDayRegisterNum(@PathVariable("day")String day);
 }
