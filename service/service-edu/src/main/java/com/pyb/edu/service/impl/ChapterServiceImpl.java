@@ -75,7 +75,7 @@ public class ChapterServiceImpl extends ServiceImpl<ChapterMapper, Chapter> impl
 
     @Override
     public void delete(String id) {
-        /*删除章节和对应的小节*/
+        /*删除章节*/
         this.removeById(id);
         /*查看是否存在对应的小节*/
         QueryWrapper<Video> wrapper = new QueryWrapper<>();

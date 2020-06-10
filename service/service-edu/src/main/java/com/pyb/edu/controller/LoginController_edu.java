@@ -4,6 +4,9 @@ import com.pyb.result.Result;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;
 
+/*用springSercurity登录替换*/
+
+/*
 @Api(description = "讲师后台登录")
 @RestController
 @RequestMapping("/edu/user")
@@ -14,3 +17,4 @@ public class LoginController_edu {
         return Result.ok();
     }
 }
+*/

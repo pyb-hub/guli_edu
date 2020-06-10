@@ -5,7 +5,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 
-/*服务端的密码加密存储到数据库*/
+
 public class MD5Utils {
 
     /**
@@ -54,12 +54,37 @@ public class MD5Utils {
         return code(dbPass);
     }
 
-    /*把输入的密码转化为数据库密码*/
+    /*把登录模块表单输入的密码加密转化为数据库密码*/
     public static String transferInputToDb(String password){
 
         String formPass = transferInputToForm(password);
         String dbPass = transferFormToDb(formPass);
         return dbPass;
+    }
+
+
+    /*SpringSecurity加密的方案*/
+    public static String encrypt(String strSrc) {
+        try {
+            char hexChars[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8',
+                    '9', 'a', 'b', 'c', 'd', 'e', 'f' };
+            byte[] bytes = strSrc.getBytes();
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(bytes);
+            bytes = md.digest();
+            int j = bytes.length;
+            char[] chars = new char[j * 2];
+            int k = 0;
+            for (int i = 0; i < bytes.length; i++) {
+                byte b = bytes[i];
+                chars[k++] = hexChars[b >>> 4 & 0xf];
+                chars[k++] = hexChars[b & 0xf];
+            }
+            return new String(chars);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            throw new RuntimeException("MD5加密出错！！+" + e);
+        }
     }
 
     public static void main(String[] args) {

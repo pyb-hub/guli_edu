@@ -34,7 +34,7 @@ public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> impleme
     public String login(Member member) {
         String mobile = member.getMobile();
         String passwordInput = member.getPassword();
-        /*输入的密码加密传入数据库中*/
+        /*输入的密码转化为加密后数据库中的密码*/
         String password = MD5Utils.transferInputToDb(passwordInput);
 
         if (StringUtils.isEmpty(mobile) || StringUtils.isEmpty(password)){
