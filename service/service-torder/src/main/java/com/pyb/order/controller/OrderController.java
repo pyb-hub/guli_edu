@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author pybCoding
  * @since 2020-06-08
  */
-@CrossOrigin
+//@CrossOrigin 和gateway里面处理二选一，不能处理二次
 @RestController
 @RequestMapping("/order")
 @Api(tags = "订单接口")

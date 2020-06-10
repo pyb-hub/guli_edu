@@ -18,7 +18,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/edu/front/teacher")
-@CrossOrigin
 @Api(tags = "讲师前台页面展示")
 public class TeacherFrontController {
 

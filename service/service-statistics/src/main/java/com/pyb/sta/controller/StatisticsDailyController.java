@@ -22,7 +22,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/sta/statistics")
-@CrossOrigin
+//@CrossOrigin 和gateway里面处理二选一，不能处理二次
 @Api(tags = "后台统计信息接口")
 public class StatisticsDailyController {
 

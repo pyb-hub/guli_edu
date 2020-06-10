@@ -20,7 +20,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/order/pay")
-@CrossOrigin
+//@CrossOrigin 和gateway里面处理二选一，不能处理二次
 @Api(tags = "微信支付接口")
 public class PayLogController {
 

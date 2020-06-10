@@ -19,7 +19,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/edu/front")
-@CrossOrigin
 @Api(tags = "前台首页课程展示")
 public class IndexFrontController {
 

@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 @RestController
-@CrossOrigin
+//@CrossOrigin 和gateway里面处理二选一，不能处理二次
 @Api(tags = "短信发送接口")
 @RequestMapping("/msm/message")
 public class MsmController {

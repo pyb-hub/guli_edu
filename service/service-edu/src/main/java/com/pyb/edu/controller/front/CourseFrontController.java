@@ -20,7 +20,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/edu/front/course")
-@CrossOrigin
 @Api(tags = "课程前台页面展示")
 public class CourseFrontController {
 

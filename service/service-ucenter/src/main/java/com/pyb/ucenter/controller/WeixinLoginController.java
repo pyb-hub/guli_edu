@@ -19,9 +19,9 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /*微信登录*/
-@CrossOrigin
+//@CrossOrigin 和gateway里面处理二选一，不能处理二次
 @Controller/*不能用restcontroller*/
-@RequestMapping("/api/ucenter/wx")
+@RequestMapping("/ucenter/wx")
 public class WeixinLoginController {
 
 

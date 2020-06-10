@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @RestController
 @RequestMapping("/ucenter/member")
-@CrossOrigin
+//@CrossOrigin 和gateway里面处理二选一，不能处理二次
 @Api(tags = "登录注册")
 public class MemberController {
 

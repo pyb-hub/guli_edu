@@ -8,36 +8,32 @@ import com.google.protobuf.InvalidProtocolBufferException;
 import org.apache.commons.dbutils.DbUtils;
 import org.apache.commons.dbutils.QueryRunner;
 import org.springframework.stereotype.Component;
-
 import javax.annotation.Resource;
 import javax.sql.DataSource;
+
 import java.net.InetSocketAddress;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
-
 @Component
 public class CanalClient {
-
-    //sql队列
+        //sql队列
     private Queue<String> SQL_QUEUE = new ConcurrentLinkedQueue<>();
-
     @Resource
     private DataSource dataSource;
-
-    /**
-     * canal入库方法
-     */
+        /**
+         * canal入库方法
+         */
     public void run() {
-
-        CanalConnector connector = CanalConnectors.newSingleConnector(new InetSocketAddress("120.79.185.188",
+        CanalConnector connector = CanalConnectors.newSingleConnector(new InetSocketAddress("182.92.235.82",
                 11111), "example", "", "");
         int batchSize = 1000;
         try {
             connector.connect();
-            connector.subscribe(".*\\..*");
+            //connector.subscribe(".*\\..*");
+            connector.subscribe("blog.test");
             connector.rollback();
             try {
                 while (true) {
@@ -51,7 +47,6 @@ public class CanalClient {
                         dataHandle(message.getEntries());
                     }
                     connector.ack(batchId);
-
                     //当队列里面堆积的sql大于一定数值的时候就模拟执行
                     if (SQL_QUEUE.size() >= 1) {
                         executeQueueSql();
@@ -66,25 +61,22 @@ public class CanalClient {
             connector.disconnect();
         }
     }
-
-    /**
-     * 模拟执行队列里面的sql语句
-     */
+        /**
+         * 模拟执行队列里面的sql语句
+         */
     public void executeQueueSql() {
         int size = SQL_QUEUE.size();
         for (int i = 0; i < size; i++) {
             String sql = SQL_QUEUE.poll();
             System.out.println("[sql]----> " + sql);
-
             this.execute(sql.toString());
         }
     }
-
-    /**
-     * 数据处理
-     *
-     * @param entrys
-     */
+        /**
+         * 数据处理
+         *
+         * @param entrys
+         */
     private void dataHandle(List<Entry> entrys) throws InvalidProtocolBufferException {
         for (Entry entry : entrys) {
             if (EntryType.ROWDATA == entry.getEntryType()) {
@@ -100,12 +92,11 @@ public class CanalClient {
             }
         }
     }
-
-    /**
-     * 保存更新语句
-     *
-     * @param entry
-     */
+        /**
+         * 保存更新语句
+         *
+         * @param entry
+         */
     private void saveUpdateSql(Entry entry) {
         try {
             RowChange rowChange = RowChange.parseFrom(entry.getStoreValue());
@@ -115,7 +106,7 @@ public class CanalClient {
                 StringBuffer sql = new StringBuffer("update " + entry.getHeader().getTableName() + " set ");
                 for (int i = 0; i < newColumnList.size(); i++) {
                     sql.append(" " + newColumnList.get(i).getName()
-                            + " = '" + newColumnList.get(i).getValue() + "'");
+                                    + " = '" + newColumnList.get(i).getValue() + "'");
                     if (i != newColumnList.size() - 1) {
                         sql.append(",");
                     }
@@ -135,12 +126,11 @@ public class CanalClient {
             e.printStackTrace();
         }
     }
-
-    /**
-     * 保存删除语句
-     *
-     * @param entry
-     */
+        /**
+         * 保存删除语句
+         *
+         * @param entry
+         */
     private void saveDeleteSql(Entry entry) {
         try {
             RowChange rowChange = RowChange.parseFrom(entry.getStoreValue());
@@ -161,12 +151,10 @@ public class CanalClient {
             e.printStackTrace();
         }
     }
-
-    /**
-     * 保存插入语句
-     *
-     * @param entry
-     */
+        /**
+         * 保存插入语句
+         * @param entry
+         */
     private void saveInsertSql(Entry entry) {
         try {
             RowChange rowChange = RowChange.parseFrom(entry.getStoreValue());
@@ -194,11 +182,10 @@ public class CanalClient {
             e.printStackTrace();
         }
     }
-
-    /**
-     * 入库
-     * @param sql
-     */
+        /**
+         * 入库
+         * @param sql
+         */
     public void execute(String sql) {
         Connection con = null;
         try {

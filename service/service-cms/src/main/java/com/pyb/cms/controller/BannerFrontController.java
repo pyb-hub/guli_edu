@@ -26,7 +26,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/cms/banner/front")
-@CrossOrigin
+//@CrossOrigin 和gateway里面处理二选一，不能处理二次
 @Api(tags = "banner的前台客户展示接口")
 public class BannerFrontController {
 

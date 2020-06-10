@@ -18,7 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Api(tags = "视频上传和删除接口")
 @RestController
 @RequestMapping("/edu/vod")
-@CrossOrigin
+//@CrossOrigin 和gateway里面处理二选一，不能处理二次
 public class VodController {
 
     @Autowired

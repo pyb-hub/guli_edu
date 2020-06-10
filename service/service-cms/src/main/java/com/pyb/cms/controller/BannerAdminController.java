@@ -22,7 +22,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/cms/banner/admin")
-@CrossOrigin
+//@CrossOrigin 和gateway里面处理二选一，不能处理二次
 @Api(tags = "banner的后台管理员接口")
 public class BannerAdminController {
 

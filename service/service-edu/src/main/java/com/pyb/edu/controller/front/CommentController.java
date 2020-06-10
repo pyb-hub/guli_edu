@@ -25,8 +25,8 @@ import java.util.HashMap;
  */
 @Api(tags = "前端课程详情页评论接口")
 @RestController
-@RequestMapping("/edu/comment")
-@CrossOrigin
+@RequestMapping("/edu/front/comment")
+//@CrossOrigin  和gateway里面处理二选一，不能处理二次
 public class CommentController {
 
     @Autowired

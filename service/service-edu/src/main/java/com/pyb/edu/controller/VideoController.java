@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.*;
 @Api(tags = "章节下的小节管理")
 @RestController
 @RequestMapping("/edu/video")
-@CrossOrigin
 public class VideoController {
 
     @Autowired

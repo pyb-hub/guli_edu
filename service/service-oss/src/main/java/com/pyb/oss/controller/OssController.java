@@ -14,7 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Api(tags = "文件上传接口")
 @RestController
 @RequestMapping("/oss/file")
-@CrossOrigin/*解决跨域问题*/
+//@CrossOrigin/*解决跨域问题*/ 和gateway里面处理二选一，不能处理二次
 public class OssController {
 
     @Autowired
