@@ -35,6 +35,7 @@ public class ChapterServiceImpl extends ServiceImpl<ChapterMapper, Chapter> impl
     @Autowired
     private VodClient vodClient;
 
+
     @Override
     public List<ChapterOne> findChapterAndVideo(String cid) {
         /*查找所有的一级分类*/
